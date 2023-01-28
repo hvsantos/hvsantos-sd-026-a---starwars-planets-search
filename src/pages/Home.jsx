@@ -14,7 +14,9 @@ const style = {
 };
 
 export default function Home() {
-  const { planets: { planets, setPlanets } } = useContext(MyProvider);
+  const {
+    planets: { planets, setPlanets },
+    numberFilter: { filterNumber } } = useContext(MyProvider);
   useEffect(() => {
     const url = 'https://swapi.dev/api/planets';
     fetch(url)
@@ -29,7 +31,7 @@ export default function Home() {
       <div style={ style }>
         <FilterInputs />
       </div>
-      <FiltersList />
+      { filterNumber.length > 0 ? <FiltersList /> : ''}
       <Table />
     </div>
   );
