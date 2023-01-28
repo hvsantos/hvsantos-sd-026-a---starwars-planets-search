@@ -17,7 +17,6 @@ export default function Home() {
   console.log(planets);
   return (
     <div>
-      
       <Table />
     </div>
   );
