@@ -5,6 +5,13 @@ import MyProvider from '../context/MyProvider';
 import Table from '../components/Table';
 import Loading from '../components/Loading';
 import FilterInputs from '../components/FilterInputs';
+import FiltersList from '../components/FiltersList';
+
+const style = {
+  display: 'flex',
+  gap: '10px',
+  margin: '10px 0',
+};
 
 export default function Home() {
   const { planets: { planets, setPlanets } } = useContext(MyProvider);
@@ -19,7 +26,10 @@ export default function Home() {
   if (!planets) return <Loading />;
   return (
     <div>
-      <FilterInputs />
+      <div style={ style }>
+        <FilterInputs />
+      </div>
+      <FiltersList />
       <Table />
     </div>
   );
