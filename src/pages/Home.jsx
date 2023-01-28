@@ -4,19 +4,25 @@ import MyProvider from '../context/MyProvider';
 
 import Table from '../components/Table';
 import Loading from '../components/Loading';
+import FilterInputs from '../components/FilterInputs';
 
 export default function Home() {
-  const { planets, setPlanets } = useContext(MyProvider);
+  const {
+    planets: { planets, setPlanets },
+    originalPlanets: { setOriginPlanets } } = useContext(MyProvider);
   useEffect(() => {
     const url = 'https://swapi.dev/api/planets';
     fetch(url)
       .then((response) => response.json())
-      .then((data) => setPlanets(data.results));
-  }, [setPlanets]);
+      .then((data) => {
+        setPlanets(data.results);
+        setOriginPlanets(data.results);
+      });
+  }, [setPlanets, setOriginPlanets]);
   if (!planets) return <Loading />;
-  console.log(planets);
   return (
     <div>
+      <FilterInputs />
       <Table />
     </div>
   );
