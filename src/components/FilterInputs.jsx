@@ -1,6 +1,14 @@
 import React, { useContext, useState } from 'react';
 import MyProvider from '../context/MyProvider';
 
+const style = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '5px',
+  border: 'solid 1px black',
+  padding: '5px',
+};
+
 export default function FilterInputs() {
   const [selectColumn, setSelectColumn] = useState('population');
   const [selectComparison, setSelectComparison] = useState('maior que');
@@ -39,15 +47,7 @@ export default function FilterInputs() {
 
   return (
     <div
-      style={ {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '5px',
-        margin: '10px 0',
-        border: 'solid 1px black',
-        width: '200px',
-        padding: '5px',
-      } }
+      style={ style }
     >
       <label htmlFor="selectColumn">
         { 'Coluna: ' }
