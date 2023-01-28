@@ -7,21 +7,13 @@ import Home from './pages/Home';
 
 function App() {
   const [planets, setPlanets] = useState(null);
-  const [originPlanets, setOriginPlanets] = useState(null);
   const [filterName, setFilterName] = useState('');
-  const [filterNumber, setFilterNumber] = useState({
-    filters: [{ colunm: '', comparison: '', value: '' }],
-    numberFilter: false,
-  });
-  const [sortBy, setSortBy] = useState({ by: '', sortFilter: false });
+  const [filterNumber, setFilterNumber] = useState([]);
+  const [sortBy, setSortBy] = useState({ by: '', willFilter: false });
   const globalContext = {
     planets: {
       planets,
       setPlanets,
-    },
-    originalPlanets: {
-      originPlanets,
-      setOriginPlanets,
     },
     nameFilter: {
       filterName,
