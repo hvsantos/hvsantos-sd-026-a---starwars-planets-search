@@ -1,9 +1,8 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 
 import MyProvider from '../context/MyProvider';
 
 import Table from '../components/Table';
-import Loading from '../components/Loading';
 import FilterInputs from '../components/FilterInputs';
 import FiltersList from '../components/FiltersList';
 
@@ -14,18 +13,7 @@ const style = {
 };
 
 export default function Home() {
-  const {
-    planets: { planets, setPlanets },
-    numberFilter: { filterNumber } } = useContext(MyProvider);
-  useEffect(() => {
-    const url = 'https://swapi.dev/api/planets';
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setPlanets(data.results);
-      });
-  }, [setPlanets]);
-  if (!planets) return <Loading />;
+  const { numberFilter: { filterNumber } } = useContext(MyProvider);
   return (
     <div>
       <div style={ style }>
