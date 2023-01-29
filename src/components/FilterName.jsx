@@ -1,12 +1,9 @@
 import React, { useContext } from 'react';
 import MyProvider from '../context/MyProvider';
-import Loading from './Loading';
 
 export default function FilterName() {
-  const { planets: { planets },
-    nameFilter: { filterName, setFilterName },
-  } = useContext(MyProvider);
-  if (!planets) return <Loading />;
+  const { nameFilter: { filterName, setFilterName } } = useContext(MyProvider);
+
   return (
     <label htmlFor="filterName">
       { 'Buscar Por Nome: '}
