@@ -37,9 +37,17 @@ export default function TableRow() {
         if (planet.name.toLowerCase().includes(filterName.toLowerCase())) {
           return (
             <tr key={ `${planet.diameter}${planet.name}` }>
-              { arrPlanet.map((tabDesc) => (
-                <td key={ `${planet}${tabDesc}` }>{ tabDesc }</td>
-              )) }
+              { arrPlanet.map((tabDesc) => (planet.name === tabDesc
+                ? (
+                  <td
+                    key={ `${planet}${tabDesc}` }
+                    data-testid="linha-planeta"
+                  >
+                    { tabDesc }
+                  </td>
+                )
+                : (<td key={ `${planet}${tabDesc}` }>{ tabDesc }</td>)
+              ))}
             </tr>
           );
         }
